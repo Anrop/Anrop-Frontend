@@ -21,6 +21,15 @@ angular.module('operations').controller('EditSteamWorkshopCtrl', function ($scop
     })
   }
 
+  $scope.hasMod = function (data) {
+    var modId = parseInt(data.id, 10)
+    var found = $scope.mods.filter(function (mod) {
+      return mod.steam_workshop_id === modId
+    })
+
+    return found.length > 0
+  }
+
   $scope.search = function () {
     $uibModal.open({
       template: require('../templates/steam_workshop_search.html'),

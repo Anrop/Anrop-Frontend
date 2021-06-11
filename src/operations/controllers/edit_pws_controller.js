@@ -22,6 +22,14 @@ angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibMod
     })
   }
 
+  $scope.hasMod = function (data) {
+    var found = $scope.addons.filter(function (addon) {
+      return addon.name === data.name
+    })
+
+    return found.length > 0
+  }
+
   $scope.submit = function () {
     $scope.add($scope.form)
   }
