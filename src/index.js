@@ -15,6 +15,7 @@ const app = angular.module('app', [
 
 app.constant('ApiConfig', {
   BASE_API: 'https://api.anrop.se',
+  BASE_AAR_API: 'https://api.aar.anrop.se',
   BASE_ARMA3SYNC_API: 'https://arma3sync.anrop.se/manager/api',
   BASE_PWS_API: 'https://playwithsix.anrop.se',
   BASE_STEAM_WORKSHOP_API: 'https://steam-workshop.anrop.se',
@@ -23,6 +24,10 @@ app.constant('ApiConfig', {
 
 app.constant('ImgurConfig', {
   API_KEY: 'Client-ID c068f0d04c394eb'
+})
+
+app.constant('WebConfig', {
+  BASE_AAR_WEB: 'https://aar.anrop.se'
 })
 
 app.config(function ($locationProvider, $routeProvider) {
