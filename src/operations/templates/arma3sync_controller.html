@@ -18,12 +18,18 @@
       <tbody>
         <tr ng-repeat="mod in mods | filter:filter">
           <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
-            <p>
+            <div>
               <strong>{{ mod.name }}</strong>
-              <small>{{ mod.playWithSix.type }}</small>
               <small>{{ mod.formattedSize }}</small>
-            </p>
-            <p>{{ mod.playWithSix.title }}</p>
+            </div>
+            <div ng-if="mod.steamWorkshop">
+              <a ng-if="mod.steamWorkshop.id" ng-href="https://steamcommunity.com/sharedfiles/filedetails/?id={{mod.steamWorkshop.id}}" target="_blank">
+                {{mod.steamWorkshop.id}}
+              </a>
+              <span ng-if="mod.steamWorkshop.name">
+                {{mod.steamWorkshop.name}}
+              </span>
+            </div>
           </td>
           <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
             <p>

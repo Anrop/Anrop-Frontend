@@ -33,6 +33,14 @@ angular.module('operations').controller('EditSteamWorkshopCtrl', function ($scop
     })
   }
 
+  $scope.suggestions = function () {
+    $uibModal.open({
+      template: require('../templates/steam_workshop_suggestions.html'),
+      controller: 'SteamWorkshopSuggestionsCtrl',
+      scope: $scope
+    })
+  }
+
   const loadMods = function () {
     SteamWorkshopSvc.mods($scope.operationId).then(function (mods) {
       mods.forEach(function (mod) {
