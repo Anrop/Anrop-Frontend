@@ -7,7 +7,7 @@
     <div class="corner-ribbon bottom-right green shadow" ng-if="operation.participating">DELTAR</div>
 
     <div class="operation-image-overlay">
-      <div class="pull-right">
+      <div class="pull-right" ng-if="operation.number_of_slots > 0">
         <span class="badge">
           <span class="glyphicon glyphicon-lock" ng-if="operation.locked"></span>
           {{ operation.number_of_participants }} / {{ operation.number_of_slots }}
