@@ -30,7 +30,7 @@
     "htmllint-loader": "^2.1.4",
     "imports-loader": "^0.8.0",
     "jquery": "^3.5.1",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "markitup": "^3.0.0-0",
     "ng-file-upload": "^12.2.13",
     "raw-loader": "^4.0.2",
