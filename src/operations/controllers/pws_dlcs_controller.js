@@ -21,6 +21,10 @@ angular.module('operations').controller('PwsDlcsCtrl', function ($scope, $uibMod
     {
       name: 'vn',
       title: 'S.O.G. Prairie Fire'
+    },
+    {
+      name: 'ws',
+      title: 'Western Sahara'
     }
   ]
 
