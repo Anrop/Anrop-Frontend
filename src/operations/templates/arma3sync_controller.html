@@ -11,12 +11,12 @@
     <form ng-submit="false">
       <div class="form-group">
         <label for="filter-name">Filtrering</label>
-        <input type="text" class="form-control" id="filter-name" placeholder="Filtera på namn" ng-model="filter.name" />
+        <input type="text" class="form-control" id="filter-name" placeholder="Filtera på namn eller Steam Workshop ID" ng-model="filter.query" />
       </div>
     </form>
     <table class="table">
       <tbody>
-        <tr ng-repeat="mod in mods | filter:filter">
+        <tr ng-repeat="mod in mods | filter:filterMods(filter.query)">
           <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
             <p>
               <strong>{{ mod.name }}</strong>
