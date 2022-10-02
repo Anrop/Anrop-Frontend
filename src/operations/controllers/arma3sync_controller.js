@@ -24,7 +24,7 @@ angular.module('operations').controller('Arma3SyncCtrl', function ($scope, $uibM
   }
 
   const loadMods = function () {
-    Arma3SyncSvc.mods($scope.operationId).then(function (mods) {
+    Arma3SyncSvc.mods().then(function (mods) {
       $scope.mods = mods
     })
   }
