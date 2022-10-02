@@ -22,7 +22,7 @@ angular.module('operations').controller('SteamWorkshopSuggestionsCtrl', function
   loadArma3SyncMods()
 
   const loadArma3SyncRepository = function () {
-    Arma3SyncSvc.mods($scope.operationId).then(function (mods) {
+    Arma3SyncSvc.mods().then(function (mods) {
       $scope.repoMods = mods
       $scope.updateMods()
     })
