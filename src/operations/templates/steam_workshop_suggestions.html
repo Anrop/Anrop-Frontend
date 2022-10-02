@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h3 class="modal-title">Steam Workshop f&ouml;rslag</h3>
+</div>
+
+<div class="modal-body">
+  <div class="progress" ng-if="loading" style="margin-top: 20px; margin-bottom: 10px;">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+    </div>
+  </div>
+
+  <button class="btn btn-primary" ng-if="!loading && mods.length > 0" ng-click="addAll(); $event.stopPropagation();">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Lägg till samtliga nedan
+  </button>
+
+  <h4 ng-if="!loading && mods.length === 0">
+    Inga matchingar
+  </h4>
+
+  <div ng-if="!loading && mods.length > 0">
+    <h4>Matchningar: {{ mods.length }}</h4>
+
+    <div ng-class-odd="'tbl1'" ng-class-even="'tbl2'" ng-repeat="mod in mods">
+      <a class="btn btn-primary pull-right" ng-click="add(mod)">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Lägg till
+      </a>
+      <img alt="" class="pull-left" ng-src="{{ mod.image }}" style="width: 100px; margin-right: 10px;" />
+      <div>
+        <p>
+          <strong>{{ mod.name }}</strong>
+          <small>{{ mod.fileSizeFormatted }}</small>
+        </p>
+        <p>
+          <small>
+            <a ng-href="https://steamcommunity.com/sharedfiles/filedetails/?id={{ mod.id }}" target="_blank">Visa på Steam Workshop</a>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="close()">Stäng</button>
+</div>
