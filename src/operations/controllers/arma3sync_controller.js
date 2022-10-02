@@ -9,8 +9,9 @@ angular.module('operations').controller('Arma3SyncCtrl', function ($scope, $uibM
     const steamWorkshopId = parseInt(query, 10) || null
     return function (item) {
       const matchesName = lowerCasedFilter && item.name && item.name.toLowerCase().indexOf(lowerCasedFilter) >= 0
-      const matchesSteamWorkshop = steamWorkshopId && item.steamWorkshop && item.steamWorkshop.id === steamWorkshopId
-      return matchesName || matchesSteamWorkshop
+      const matchesSteamWorkshopId = steamWorkshopId && item.steamWorkshop && item.steamWorkshop.id === steamWorkshopId
+      const matchesSteamWorkshopName = item.steamWorkshop && item.steamWorkshop.name && item.steamWorkshop.name.toLowerCase().indexOf(lowerCasedFilter) >= 0
+      return matchesName || matchesSteamWorkshopId || matchesSteamWorkshopName
     }
   }
 
