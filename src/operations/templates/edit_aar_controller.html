@@ -1,0 +1,24 @@
+<div class="block-title">AAR</div>
+<div class="bordered-block ng-hide" ng-show="aars">
+  <table width="100%" cellspacing="0">
+    <tr ng-repeat="aar in aars | orderBy: 'name' track by aar.id">
+      <td style="vertical-align: middle" ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+        <form style="display: inline-block">
+          <button type="submit" class="btn btn-danger" ng-click="delete(aar)">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+          </button>
+        </form>
+
+        <a ng-href="{{aarUrl(aar)}}" target="_blank">{{ aar.name }}</a>
+        <small>{{ aar.length * 1000 | date: 'H:mm:ss': 'UTC' }}</small>
+      </td>
+    </tr>
+  </table>
+
+  <div ng-show="operation" style="padding: 10px;">
+    <button class="btn btn-primary" ng-click="search()">
+      <span class="glyphicon glyphicon-search"></span>
+      Lägg till AAR
+    </button>
+  </div>
+</div>

@@ -1,0 +1,19 @@
+<div ng-if="aars.length > 0">
+  <div class="block-title">AAR</div>
+  <div class="bordered-block">
+    <table width="100%" cellspacing="0">
+      <tr ng-repeat="aar in aars | orderBy: 'name' track by aar.id">
+        <td style="vertical-align: middle" ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+          <div ng-if="aar.name">
+            <a target="_blank" ng-href="{{aarUrl(aar)}}">{{ aar.name }}</a>
+            <small>{{ aar.length * 1000 | date: 'H:mm:ss': 'UTC' }}</small>
+          </div>
+
+          <div ng-if="!aar.name">
+            <a target="_blank" ng-href="{{aarUrl(aar)}}">{{ aar.aar_id }}</a>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

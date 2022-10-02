@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <h3 class="modal-title">Lägg till AAR</h3>
+</div>
+<div class="modal-body">
+  <div class="progress" ng-if="loading" style="margin-top: 20px; margin-bottom: 10px;">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+    </div>
+  </div>
+
+  <h4 ng-if="!loading && aars.length === 0">
+    Inga matchingar
+  </h4>
+
+  <div ng-if="aars.length > 0">
+    <h4>Matchningar: {{ aars.length }}</h4>
+    <table class="table">
+      <tbody>
+        <tr ng-repeat="aar in aars">
+          <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+            <p>
+              <a ng-href="{{aarUrl(aar)}}" target="_blank">
+                <strong>{{ aar.name }}</strong>
+              </a>
+              <small>{{ aar.length * 1000 | date: 'H:mm:ss': 'UTC' }}</small>
+            </p>
+          </td>
+          <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+            <p>
+              <a class="btn btn-primary pull-right" ng-click="add(aar)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Lägg till
+              </a>
+              <div class="clearfix"></div>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="close()">Stäng</button>
+</div>
