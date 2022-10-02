@@ -1,4 +1,6 @@
-angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibModal, ApiConfig, PwsSvc) {
+angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibModal, ApiConfig, Arma3SyncSvc, PwsSvc) {
+  $scope.addons = []
+  $scope.arma3syncMods = []
   $scope.form = {}
 
   $scope.add = function (data) {
@@ -30,6 +32,16 @@ angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibMod
 
   $scope.hasMod = function (mod) {
     return !!$scope.findMod(mod)
+  }
+
+  $scope.findArma3SyncMod = function (name) {
+    return $scope.arma3syncMods.find(function (arma3syncMod) {
+      return name === arma3syncMod.name
+    })
+  }
+
+  $scope.addonExistsInArma3Sync = function (addon) {
+    return !!$scope.findArma3SyncMod(addon.name)
   }
 
   $scope.submit = function () {
@@ -79,4 +91,12 @@ angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibMod
   }
 
   loadAddons()
+
+  const loadArma3SyncMods = function () {
+    Arma3SyncSvc.mods().then(function (mods) {
+      $scope.arma3syncMods = mods
+    })
+  }
+
+  loadArma3SyncMods()
 })
