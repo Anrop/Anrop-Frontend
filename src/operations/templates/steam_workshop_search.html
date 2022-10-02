@@ -30,9 +30,13 @@
     <h4>Matchningar: {{ mods.length }}</h4>
 
     <div ng-class-odd="'tbl1'" ng-class-even="'tbl2'" ng-repeat="mod in mods">
-      <a class="btn btn-primary pull-right" ng-click="add(mod)">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      <a class="btn btn-primary pull-right" ng-click="add(mod)" ng-hide="hasMod(mod)">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         Lägg till
+      </a>
+      <a class="btn btn-danger pull-right" ng-click="delete(findMod(mod))" ng-show="hasMod(mod)">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+        Ta bort
       </a>
       <img alt="" class="pull-left" ng-src="{{ mod.image }}" style="width: 100px; margin-right: 10px;" />
       <div>

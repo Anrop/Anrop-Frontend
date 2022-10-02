@@ -30,7 +30,9 @@ angular.module('operations').controller('SteamWorkshopSuggestionsCtrl', function
 
   $scope.addAll = function () {
     $scope.mods.forEach(function (mod) {
-      $scope.add(mod)
+      if (!$scope.hasMod(mod)) {
+        $scope.add(mod)
+      }
     })
   }
 

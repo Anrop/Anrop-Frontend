@@ -33,9 +33,13 @@
           </td>
           <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
             <p>
-              <a class="btn btn-primary pull-right" ng-click="add({name: mod.name})">
+              <a class="btn btn-primary pull-right" ng-click="add({name: mod.name})" ng-hide="hasMod(mod)">
                 <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
                 Lägg till
+              </a>
+              <a class="btn btn-danger pull-right" ng-click="delete(findMod(mod))" ng-show="hasMod(mod)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+                Ta bort
               </a>
               <div class="clearfix"></div>
             </p>

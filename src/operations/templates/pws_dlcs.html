@@ -12,9 +12,13 @@
         </td>
         <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
           <p>
-            <a class="btn btn-primary pull-right" ng-click="addDlc(dlc)">
+            <a class="btn btn-primary pull-right" ng-click="add(dlc)" ng-hide="hasMod(dlc)">
               <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
               Lägg till
+            </a>
+            <a class="btn btn-danger pull-right" ng-click="delete(findMod(dlc))" ng-show="hasMod(dlc)">
+              <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+              Ta bort
             </a>
             <div class="clearfix"></div>
           </p>
