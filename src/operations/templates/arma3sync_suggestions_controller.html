@@ -1,0 +1,61 @@
+<div class="modal-header">
+  <h3 class="modal-title">Arma3Sync f&ouml;rslag</h3>
+</div>
+
+<div class="modal-body">
+  <div class="progress" ng-if="loading" style="margin-top: 20px; margin-bottom: 10px;">
+    <div class="progress-bar progress-bar-striped active" role="progressbar" style="width: 100%">
+    </div>
+  </div>
+
+  <button class="btn btn-primary" ng-if="!loading && mods.length > 0" ng-click="addAll(); $event.stopPropagation();">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Lägg till saknade nedan
+  </button>
+
+  <h4 ng-if="!loading && mods.length === 0">
+    Inga matchingar
+  </h4>
+
+  <div ng-if="!loading && mods.length > 0">
+    <h4>Matchningar: {{ mods.length }}</h4>
+
+    <table class="table">
+      <tbody>
+        <tr ng-repeat="mod in mods | filter:filterMods(filter.query)">
+          <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+            <div>
+              <strong>{{ mod.name }}</strong>
+              <small>{{ mod.formattedSize }}</small>
+            </div>
+            <div ng-if="mod.steamWorkshop">
+              <a ng-if="mod.steamWorkshop.id" ng-href="https://steamcommunity.com/sharedfiles/filedetails/?id={{mod.steamWorkshop.id}}" target="_blank">
+                {{mod.steamWorkshop.id}}
+              </a>
+              <span ng-if="mod.steamWorkshop.name">
+                {{mod.steamWorkshop.name}}
+              </span>
+            </div>
+          </td>
+          <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+            <p>
+              <a class="btn btn-primary pull-right" ng-click="add({name: mod.name})" ng-hide="hasMod(mod)">
+                <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                Lägg till
+              </a>
+              <a class="btn btn-danger pull-right" ng-click="delete(findMod(mod))" ng-show="hasMod(mod)">
+                <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+                Ta bort
+              </a>
+              <div class="clearfix"></div>
+            </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="close()">Stäng</button>
+</div>
