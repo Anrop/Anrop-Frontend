@@ -72,6 +72,18 @@ angular.module('operations').controller('EditPwsCtrl', function ($scope, $uibMod
     })
   }
 
+  $scope.suggestions = function () {
+    $uibModal.open({
+      template: require('../templates/arma3sync_suggestions_controller.html'),
+      controller: 'Arma3SyncSuggestionsCtrl',
+      scope: $scope
+    }).result.then(function () {
+      loadAddons()
+    }, function () {
+
+    })
+  }
+
   const loadAddons = function () {
     PwsSvc.addons($scope.operationId).then(function (addons) {
       $scope.addons = addons
