@@ -8,9 +8,25 @@
     </div>
   </div>
 
+  <div ng-if="!loading && missingSteamWorkshopIds.length > 0">
+    <h4>Omatchade: {{ missingSteamWorkshopIds.length }}</h4>
+
+    <table class="table">
+      <tbody>
+        <tr ng-repeat="steamWorkshopId in missingSteamWorkshopIds">
+          <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
+            <div>
+              <strong>{{ steamWorkshopId }}</strong>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <button class="btn btn-primary" ng-if="!loading && mods.length > 0" ng-click="addAll(); $event.stopPropagation();">
     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-    Lägg till saknade nedan
+    Lägg till saknade matchningar nedan
   </button>
 
   <h4 ng-if="!loading && mods.length === 0">
@@ -22,7 +38,7 @@
 
     <table class="table">
       <tbody>
-        <tr ng-repeat="mod in mods | filter:filterMods(filter.query)">
+        <tr ng-repeat="mod in mods">
           <td ng-class-odd="'tbl1'" ng-class-even="'tbl2'">
             <div>
               <strong>{{ mod.name }}</strong>
