@@ -22,7 +22,7 @@ angular.module('operations').controller('EditSteamWorkshopCtrl', function ($scop
   }
 
   $scope.findMod = function (data) {
-    var modId = parseInt(data.id, 10)
+    const modId = parseInt(data.id, 10)
     return $scope.mods.find(function (mod) {
       return mod.steam_workshop_id === modId
     })
@@ -48,6 +48,14 @@ angular.module('operations').controller('EditSteamWorkshopCtrl', function ($scop
     $uibModal.open({
       template: require('../templates/steam_workshop_suggestions.html'),
       controller: 'SteamWorkshopSuggestionsCtrl',
+      scope: $scope
+    })
+  }
+
+  $scope.uploadHTML = function () {
+    $uibModal.open({
+      template: require('../templates/steam_workshop_html.html'),
+      controller: 'SteamWorkshopHTMLCtrl',
       scope: $scope
     })
   }

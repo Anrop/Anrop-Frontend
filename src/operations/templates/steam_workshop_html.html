@@ -1,0 +1,57 @@
+<div class="modal-header">
+  <h3 class="modal-title">Steam Workshop HTML</h3>
+</div>
+
+<div class="modal-body">
+  <div class="form-control operation-image-drop-box" accept="text/html" id="html"
+    ng-show="!content"
+    ng-model="file"
+    ngf-select
+    ngf-multiple="false"
+    ngf-pattern="'text/html'"
+    ngf-drop
+    ngf-drag-over-class="dragover"
+  >
+    Sl&auml;pp en HTML-fil h&aumlr eller klicka p&aring; f&auml;ltet f&ouml;r att ladda upp en HTML-fil
+  </div>
+
+  <button class="btn btn-primary" ng-show="content && mods.length > 0" ng-click="addAll(); $event.stopPropagation();">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    Lägg till saknade nedan
+  </button>
+
+  <h4 ng-show="content && mods.length === 0">
+    Inga matchingar
+  </h4>
+
+  <div ng-show="content && mods.length > 0">
+    <h4>Matchningar: {{ mods.length }}</h4>
+
+    <div ng-class-odd="'tbl1'" ng-class-even="'tbl2'" ng-repeat="mod in mods">
+      <a class="btn btn-primary pull-right" ng-click="add(mod)" ng-hide="hasMod(mod)">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        Lägg till
+      </a>
+      <a class="btn btn-danger pull-right" ng-click="delete(findMod(mod))" ng-show="hasMod(mod)">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true" title="Ta bort"></span>
+        Ta bort
+      </a>
+      <img alt="" class="pull-left" ng-src="{{ mod.image }}" style="width: 100px; margin-right: 10px;" />
+      <div>
+        <p>
+          <strong>{{ mod.title }}</strong>
+          <small>{{ mod.fileSizeFormatted }}</small>
+        </p>
+        <p>
+          <small>
+            <a ng-href="{{ mod.link }}" target="_blank">Visa på Steam Workshop</a>
+          </small>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-footer">
+  <button class="btn btn-primary" ng-click="close()">Stäng</button>
+</div>
