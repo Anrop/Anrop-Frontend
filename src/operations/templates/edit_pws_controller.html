@@ -10,6 +10,8 @@
         </form>
 
         {{ addon.name }}
+
+        <span class="glyphicon glyphicon-warning-sign text-danger" aria-hidden="true" title="Saknas på Arma3Sync" ng-hide="addonExistsInArma3Sync(addon)"></span>
       </td>
     </tr>
   </table>
