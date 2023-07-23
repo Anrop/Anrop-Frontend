@@ -1,4 +1,4 @@
-FROM node:lts-alpine AS builder
+FROM node:16-alpine AS builder
 WORKDIR /build/
 COPY package.json /build/
 RUN npm install
@@ -9,7 +9,7 @@ COPY webpack/ /build/webpack/
 COPY webpack.production.config.js /build/
 RUN npm run webpack
 
-FROM node:lts-alpine
+FROM node:16-alpine
 WORKDIR /app/
 COPY package.json /app/
 RUN npm install --production
