@@ -19,6 +19,10 @@ angular.module('operations').controller('PwsDlcsCtrl', function ($scope, $uibMod
       title: 'Global Mobilization'
     },
     {
+      name: 'spe',
+      title: 'Spearhead 1944'
+    },
+    {
       name: 'vn',
       title: 'S.O.G. Prairie Fire'
     },
