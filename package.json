@@ -36,9 +36,9 @@
     "raw-loader": "^4.0.2",
     "standard": "^16.0.2",
     "style-loader": "^2.0.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
-    "webpack-dev-server": "^3.11.3"
+    "webpack": "^5.92.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
   },
   "standard": {
     "globals": [
